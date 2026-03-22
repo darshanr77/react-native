@@ -1,44 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View, Pressable, Image, SafeAreaView } from 'react-native';
-import {Link} from 'expo-router';
+import { StyleSheet, Text, View, Image, SafeAreaView, Pressable } from 'react-native';
+import { Link } from 'expo-router';
 
 const Home = () => {
-  const handlePress = () => {
-    console.log("Button pressed!");
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.card}>
-
-        {/* Text Component */}
         <Text style={styles.title}>Welcome Home</Text>
-
-
-        {/* Image Component - Requires a source prop */}
+        
         <Image 
-          source={{ uri: 'https://picsum.photos/200' }} 
+          source={{ uri: 'https://picsum.photos/400' }} 
           style={styles.image} 
         />
 
+        <View style={styles.buttonContainer}>
+          {/* We wrap the Link around a Pressable or View to make it look like a real button */}
+          <Link href="/profile" asChild>
+            <Pressable style={styles.primaryButton}>
+              <Text style={styles.buttonText}>Go to Profile</Text>
+            </Pressable>
+          </Link>
 
-
-        {/* Pressable Component - The modern way to make buttons */}
-        <Pressable 
-          onPress={handlePress}
-          style={({ pressed }) => [
-            styles.button,
-            { opacity: pressed ? 0.5 : 1 }
-          ]}
-        >
-          <Text style={styles.buttonText}>Click Me</Text>
-        </Pressable>
-
-        {/* Profile page naviagtion */}
-        <Link style={styles.link} href="/profile">Profile page</Link>
-
-        <Link style={styles.link} href="/contact">Contact page</Link>
-        
+          <Link href="/contact" asChild>
+            <Pressable style={styles.secondaryButton}>
+              <Text style={styles.secondaryButtonText}>Contact Support</Text>
+            </Pressable>
+          </Link>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -47,44 +35,67 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f0f2f5', // Light grey background
     alignItems: 'center',
     justifyContent: 'center',
   },
   card: {
     backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 15,
+    width: '90%',
+    padding: 24,
+    borderRadius: 20,
+    // Shadow for iOS
     shadowColor: '#000',
-    elevation: 5,
-    width: '80%',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    // Shadow for Android
+    elevation: 8,
+    alignItems: 'center',
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
+    fontSize: 28,
+    fontWeight: '800',
+    color: '#1a1a1a',
+    marginBottom: 20,
+    letterSpacing: 0.5,
   },
   image: {
     width: '100%',
-    height: 150,
-    borderRadius: 10,
-    marginBottom: 20,
+    height: 200,
+    borderRadius: 15,
+    marginBottom: 25,
   },
-  button: {
-    backgroundColor: '#007AFF',
-    padding: 12,
-    borderRadius: 8,
+  buttonContainer: {
+    width: '100%',
+    gap: 12, // Space between buttons (React Native 0.71+)
+  },
+  primaryButton: {
+    backgroundColor: '#b62929', // Matching your header color
+    paddingVertical: 14,
+    borderRadius: 12,
     alignItems: 'center',
+    width: '100%',
   },
   buttonText: {
     color: 'white',
-    fontWeight: '600',
+    fontSize: 16,
+    fontWeight: '700',
   },
-  link:{
-    padding:10,
-    margin:4,
-    borderColor:'#4119d3'
-  }
+  secondaryButton: {
+    backgroundColor: 'transparent',
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: 'center',
+    width: '100%',
+    borderWidth: 2,
+    borderColor: '#b62929',
+  },
+  secondaryButtonText: {
+    color: '#b62929',
+    fontSize: 16,
+    fontWeight: '700',
+  },
 });
 
 export default Home;
