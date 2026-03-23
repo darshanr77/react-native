@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 40, // 100 is huge for mobile screens!
     fontStyle: 'italic',
     fontWeight: '700', // Must be a string
-    borderColor: '#2e2e2e',
+    borderColor: '#cfb4b4',
     borderWidth: 2,
     padding: 10,
     borderRadius: 5,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   subText: {
     fontSize: 38,
     marginTop: 20,
-    color:'#2a2e2e',
+    color:'#a9cece',
     borderBottomWidth:3,
     borderBottomColor:'#051216'
   }

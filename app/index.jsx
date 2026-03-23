@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, Pressable, useColorScheme } from 'react-
 import { Link } from 'expo-router';
 import { Colors } from './constants/Colors';
 import ThemedView from '../components/ThemedView';
+import ThemedLogo from '../components/ThemedLogo';
 
 const Home = () => {
   const colorScheme = useColorScheme();
@@ -13,7 +14,7 @@ const Home = () => {
       <ThemedView style={styles.card}>
         <Text style={styles.title}>Welcome Home</Text>
 
-        <Image 
+        <ThemedLogo 
           source={{ uri: 'https://picsum.photos/400' }} 
           style={styles.image} 
         />
