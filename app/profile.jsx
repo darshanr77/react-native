@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, Pressable} from 'react-native';
+import { StyleSheet, Text, View, Pressable, useColorScheme} from 'react-native';
 import {Link} from 'expo-router'
 import React from 'react';
+import { Colors } from './constants/Colors';
 
 const Profile = () => { // Capitalize component names (best practice)
 
@@ -8,8 +9,11 @@ const Profile = () => { // Capitalize component names (best practice)
     console.log("button pressed");
   };
 
+   const colorScheme = useColorScheme();
+   const theme = Colors[colorScheme] ?? Colors.light
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container , { backgroundColor : theme.background } ]}>
       <Pressable onPress={handlePress} style={styles.button}>
         <Text style={styles.text}>profile</Text>
       </Pressable>
