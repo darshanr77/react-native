@@ -11,13 +11,10 @@ const Home = () => {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <ThemedView style={styles.card}>
+      <ThemedView >
         <Text style={styles.title}>Welcome Home</Text>
 
-        <ThemedLogo 
-          source={{ uri: 'https://picsum.photos/400' }} 
-          style={styles.image} 
-        />
+        <ThemedLogo />
 
         <View style={styles.buttonContainer}>
           <Link href="/profile" asChild>
